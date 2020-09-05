@@ -54,7 +54,7 @@ describe('ToolbarComponent', () => {
     fixture.detectChanges();
     const opSelFiles = fixture.nativeElement.querySelector('#selectfiles');
     expect(opSelFiles.textContent.includes('test-file-name-1')).toBeTrue();
-    expect(opSelFiles.textContent.includes('04/09/2020, 10:10:00')).toBeTrue();
+    expect(opSelFiles.textContent.includes('test-file-name-2')).toBeTrue();
   });
 
   it('should remove a file from the list', () => {
