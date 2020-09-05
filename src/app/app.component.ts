@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'PssLogViewer';
+  title = '1830PSS Log Viewer';
+
+  constructor(private titleSvc: Title) {
+    this.titleSvc.setTitle(this.title);
+  }
 }
