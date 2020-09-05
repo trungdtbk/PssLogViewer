@@ -11,7 +11,8 @@ describe('AppComponent', () => {
         RouterTestingModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        ToolbarComponent
       ],
     }).compileComponents();
   }));

@@ -1,13 +1,13 @@
 <p-toolbar>
   <div class="p-toolbar-group-left">
-    <button pButton icon="pi pi-folder-open" class="p-button-sm" label="Select Files" (click)="opSelectFiles.toggle($event)"></button>
+    <button id="btnSelFiles" pButton icon="pi pi-folder-open" class="p-button-sm" label="Select Files" (click)="opSelectFiles.toggle($event)"></button>
   </div>
   <div class="p-toolbar-group-right">
   </div>
 </p-toolbar>
 
 <p-overlayPanel #opSelectFiles>
-  <div class="card">
+  <div class="card" id="selectfiles">
     <p-table #fileList [value]="files" [rowHover]="true"
       [(selection)]="selectedFiles"
       [style]="{'max-width': '850px'}"
