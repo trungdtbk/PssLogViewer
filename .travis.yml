@@ -3,10 +3,12 @@ sudo: false
 
 language: node_js
 node_js:
-- "12"
+- "12.16.2"
 
 addons:
+  chrome: stable
   apt:
+    update: true
     sources:
       - google-chrome
     packages:
