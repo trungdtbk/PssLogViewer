@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FileserviceService } from './fileservice.service';
+import { FilesCacheService } from './filecache.service';
 
 describe('FileserviceService', () => {
-  let service: FileserviceService;
+  let service: FilesCacheService;
   let files = [
     new File([""], 'file-1'),
     new File([""], 'file-2')
@@ -11,7 +11,7 @@ describe('FileserviceService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(FileserviceService);
+    service = TestBed.inject(FilesCacheService);
   });
 
   it('should process the list of file', () => {

@@ -17,7 +17,7 @@ export class FileCache {
 @Injectable({
   providedIn: 'root'
 })
-export class FileserviceService {
+export class FilesCacheService {
 
   files;  
 
@@ -28,9 +28,11 @@ export class FileserviceService {
   process(files: File[]) {
     files.forEach(file => {
       if (!(file.name in this.files)) {
+        console.log('fileservice process: ' + file.name);
         this.files[file.name] = new FileCache(file);
       }
-    })
+    });
+    // TODO: remove files from this.files if not exist in the files argument
   }
 
   getFiles() {
