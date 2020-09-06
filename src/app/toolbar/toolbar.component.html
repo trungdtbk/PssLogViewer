@@ -15,7 +15,7 @@
       <ng-template pTemplate="caption">
         <div class="table-header">
           <div class="p-d-flex">
-            <span>List of Files</span>
+            <button id="btnParse" pButton (click)="parseFiles()" label="Parse" class="p-button-sm p-button-info p-button-rounded p-button-raised"></button>
             <label pButton label="Add files" class="p-ml-auto p-button-raised p-button-success" icon="pi pi-plus">
               <input type="file" multiple (change)="addFiles($event.target.files)" style="display: none;">
             </label>

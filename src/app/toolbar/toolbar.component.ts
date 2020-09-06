@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FilesCacheService } from '../services/filecache.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -10,10 +11,16 @@ export class ToolbarComponent implements OnInit {
   files: any[];
   selectedFiles: any[];
 
-  constructor() { }
+  constructor(private fileservice: FilesCacheService) { }
 
   ngOnInit(): void {
     this.files = [];
+  }
+
+  parseFiles() {
+    if (this.selectedFiles && this.selectedFiles.length > 0) {
+      this.fileservice.process(this.selectedFiles);
+    }
   }
 
   addFiles(files: File[]) {
