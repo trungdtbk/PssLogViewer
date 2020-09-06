@@ -27,7 +27,9 @@ export class FileserviceService {
 
   process(files: File[]) {
     files.forEach(file => {
-      this.files[file.name] = new FileCache(file);
+      if (!(file.name in this.files)) {
+        this.files[file.name] = new FileCache(file);
+      }
     })
   }
 

@@ -28,6 +28,7 @@ describe('FileserviceService', () => {
   it('should update file cache', () => {
     let file = new File([""], 'file-1');
     service.process(files);
+    service.process(files); // should not process twice
     service.updateFile(file, 'key1', ['data1']);
     service.updateFile(file, 'key2', {data: 'data2'});
     const cache1 = service.getFiles()['file-1'].cache;
@@ -39,5 +40,6 @@ describe('FileserviceService', () => {
     service.process(files);
     service.updateFile(new File([""], 'file-3'), 'key1', 'data');
     expect(Object.keys(service.getFiles())).toEqual(['file-1', 'file-2']);
-  })
+  });
+
 });
