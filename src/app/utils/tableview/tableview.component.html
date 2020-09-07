@@ -1,0 +1,56 @@
+<p-table #table [columns]="selectedColumns" [value]="rows" [dataKey]="dataKey"
+  [resizableColumns]="true" columnResizeMode="expand" selectionMode="multiple" sortMode="multiple"
+  [paginator]="true" [rows]="15" [rowHover]="true"
+  [rowsPerPageOptions]="[10,15,20,25,30,40,50]"
+  contextMenuSelectionMode="joint"
+  [showCurrentPageReport]="true"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+>
+  <ng-template pTemplate="caption">
+    <div class="table-header">
+      <div class="p-d-flex">
+        <p-multiSelect [options]="cols" [(ngModel)]="selectedColumns" optionLabel="header" class="p-mr-4"
+        selectedItemsLabel="{0} columns selected" [style]="{minWidth: '200px'}" placeHolder="Choose columns"></p-multiSelect>
+
+        <button type="button" pButton pRipple icon="pi pi-file-o" (click)="table.exportCSV()" class="p-ml-3 p-mr-1" pTooltip="CSV" tooltipPosition="bottom"></button>
+      </div>
+    </div>
+  </ng-template>  
+  
+  <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th style="width: 4rem"></th>
+        <th [pSortableColumn]="col.field" *ngFor="let col of columns" pResizableColumn>
+            {{col.header}}
+            <p-sortIcon [field]="col.field"></p-sortIcon>
+        </th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-row let-columns="columns" let-expanded="expanded">
+      <tr>
+        <td>
+          <button type="button" pButton pRipple [pRowToggler]="row" class="p-button-text p-button-rounded p-button-plain" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+        </td>
+        <td *ngFor="let col of columns" [ngSwitch]="true" 
+        >
+          <span *ngSwitchCase="isDate(row[col.field])">{{ row[col.field] | date : 'yyyy/MM/dd HH:mm:ss' }}</span>
+          <span *ngSwitchDefault [innerHTML]="row[col.field]"></span>
+        </td>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="rowexpansion" let-row let-columns="cols">
+    <tr>
+      <td [attr.colspan]="selectedColumns.length + 1">
+        <div *ngIf="row.details; else noDetails">
+          <span [innerHTML]="row.details"></span>
+        </div>
+        <ng-template #noDetails>No more details</ng-template>
+      </td>
+    </tr>    
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="8">No records found.</td>
+    </tr>
+  </ng-template>
+</p-table>
