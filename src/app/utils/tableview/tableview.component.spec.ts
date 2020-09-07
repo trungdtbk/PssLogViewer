@@ -5,6 +5,7 @@ import { TableModule } from 'primeng/table';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { ButtonModule } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 let cols = [
   { header: "ID", field: "id", hide: true, key: true },
@@ -25,6 +26,7 @@ describe('TableviewComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ TableviewComponent ],
       imports: [
+        BrowserAnimationsModule,
         FormsModule,
         TableModule,
         MultiSelectModule,
